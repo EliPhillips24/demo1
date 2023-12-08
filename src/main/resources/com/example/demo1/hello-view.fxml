@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="myPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#background" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+   <children>
+      <Text layoutX="137.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To Do List Text" wrappingWidth="84.61520744007305" />
+      <TextField fx:id="myTextFeild" layoutX="14.0" layoutY="52.0" onAction="#TextOnAction" prefHeight="26.0" prefWidth="300.0" promptText="Put Your List In Here" />
+      <Text layoutX="137.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To Do List Date" wrappingWidth="84.61520744007305" />
+      <DatePicker fx:id="myDatePicker" layoutX="14.0" layoutY="136.0" prefHeight="25.0" prefWidth="300.0" promptText="Put Your Date In Here" />
+      <Button layoutX="344.0" layoutY="12.0" mnemonicParsing="false" onAction="#TextOnAction" prefHeight="26.0" prefWidth="249.0" text="Put In To Do List" />
+      <Button layoutX="344.0" layoutY="46.0" mnemonicParsing="false" onAction="#ButtonRemove" prefHeight="26.0" prefWidth="249.0" text="Delete" />
+      <Button layoutX="344.0" layoutY="78.0" mnemonicParsing="false" onAction="#Reset" prefHeight="26.0" prefWidth="249.0" text="Reset All(Gone Forever)" />
+      <Label fx:id="welcomeText" />
+      <Text layoutX="179.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TO DO" />
+      <ListView fx:id="myListView" layoutX="14.0" layoutY="207.0" prefHeight="361.0" prefWidth="368.0" />
+      <Button layoutX="344.0" layoutY="108.0" mnemonicParsing="false" onAction="#donetask" prefHeight="26.0" prefWidth="249.0" text="Done" />
+    <TitledPane animated="false" layoutX="389.0" layoutY="207.0" text="Done">
+         <content>
+            <ListView fx:id="DoneListView" prefHeight="150.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+    <TitledPane animated="false" layoutX="389.0" layoutY="390.0" text="Recently Deleted">
+         <content>
+            <ListView fx:id="OverListView" prefHeight="141.0" prefWidth="200.0" />
+         </content>
+         <graphic>
+            <Button mnemonicParsing="false" onAction="#restore" text="Restore" />
+         </graphic>
+      </TitledPane>
+      <RadioButton fx:id="myRadio" layoutX="342.0" layoutY="140.0" mnemonicParsing="false" text="Edit Text" />
+   </children>
+</Pane>
