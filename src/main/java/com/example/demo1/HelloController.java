@@ -10,7 +10,11 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Popup;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 
@@ -73,20 +77,26 @@ DoneListView.getItems().addAll(myListView.getSelectionModel().getSelectedItem())
         }
 
     }
-    public void background(){
-        BackgroundFill backgroundFill =
-                new BackgroundFill(
-                        Color.valueOf("#adb0cc"),
-                        new CornerRadii(0),
-                        new Insets(0)
-                );
+   public void popup(){
+       Label label = new Label("This is a Popup");
 
-        Background background =
-                new Background(backgroundFill);
+       // create a popup
+       Popup popup = new Popup();
 
-        myPane.setBackground(background);
+       // set background
+
+       // add the label
+       popup.getContent().add(label);
+
+       // set size of label
+       label.setMinWidth(80);
+       label.setMinHeight(50);
+
+
+
+   }
     }
 
 
-}
+
 
