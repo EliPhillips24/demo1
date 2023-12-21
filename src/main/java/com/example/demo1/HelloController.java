@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -17,10 +18,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -106,14 +104,38 @@ public class HelloController {
         }
     }
 
+    public void Saving() throws Exception {
+        File fileForData = new File("Save");
+        FileOutputStream outputStream = new FileOutputStream(fileForData);
+        ObjectOutputStream objOutputStream = new ObjectOutputStream(outputStream);
+        ObservableList list1 = myListView.getItems();
+        objOutputStream.writeObject(list1.size());
+        for (Object item: list1) {
+            objOutputStream.writeObject(item);
+        }
+     //   objOutputStream.writeObject(myListView);
+     //   objOutputStream.writeObject(DoneListView);
+        objOutputStream.flush();
+        System.out.println(list1);
+    }
 
-    public void tableView() {
+    public void RecalData() throws Exception {
+        File fileForData = new File("Save");
+        FileInputStream inputStream = new FileInputStream(fileForData);
+        ObjectInputStream objInputStream = new ObjectInputStream(inputStream);
+        Integer numOfSavedObjects = (Integer)objInputStream.readObject();
+        for (int i = 0; i < numOfSavedObjects; i = i + 1) {
+            String listText = (String) objInputStream.readObject();
+            myListView.getItems().add(listText);
+        }
+        inputStream.close();
+    }
 
-
+    public void initialize() throws Exception{
+        this.RecalData();
     }
 
 }
-
 
 
 
